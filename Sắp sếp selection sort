@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+void doicho(int &a, int &b)
+{
+	int t=a;
+	a=b;
+	b=t;
+}
+void selectionsort(int a[],int n)
+{
+	int min;
+	for(int i=0;i<n-1;i++)
+{
+	min=i;
+	for(int j=i+1;j<n;j++)
+	if(a[min]>a[j]) min=j;
+	if(min!=i)doicho(a[min],a[i]);
+}	
+}
+int main()
+{
+	int a[5]={20,10,5,25,50};
+	selectionsort(a,5);
+	for(int i=0;i<5;i++)
+	cout<<a[i]<<" ";
+	return 0;
+}
