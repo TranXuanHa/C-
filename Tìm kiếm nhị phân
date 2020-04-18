@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+int timkiemnhiphan(int a[],int n, int x)
+{
+	int left=0,right=n-1;
+	int mid;
+	while(left<=right)
+	{
+		mid=(left+right)/2;
+		if(a[mid]==x)return mid;
+		else if(a[mid]>x) right=mid-1;
+		else left=mid+1;
+	}
+	if(left>right) return -1;
+}
+int main()
+{
+	int a[5]={10,20,30,40,50};
+	int x;
+	cout<<"\n Nhap x: ";
+	cin>>x;
+	int t=timkiemnhiphan(a,5,x);
+	if(t!=-1)cout<<"\n Gia tri can tim o vi tri thu"<<t;
+	else
+	cout<<"\n Khong co gia tri can tim trong day";
+}
