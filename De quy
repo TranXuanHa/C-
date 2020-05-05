@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+void Dequy(int n)
+{
+   if(n==0) return;
+   cout<<n<<"\t";
+   Dequy(n-1);
+}
+int main()
+{
+    int n=10;
+    Dequy(10);
+}
