@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int n;
+int a[100];
+void In()
+{
+    cout<<endl;
+    for(int i=0;i<n;i++)
+    cout<<a[i]<<"\t";
+}
+void quaylui(int i)
+{
+   if(i>=n)
+   In();
+   else
+   {
+       for(int j=1;j<=3;j++)
+       {
+           a[i]=j;
+           quaylui(i+1);
+       }
+   }
+}
+int main()
+{
+    n=2;
+    //do dai cua n la bao nhieu
+    // de quy tu vi tri dau tien
+    quaylui(0);
+    return 0;
+}
