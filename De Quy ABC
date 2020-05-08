@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int n;
+char a[100];
+void In()
+{
+    cout<<endl;
+    for(int i=0;i<n;i++)
+    cout<<a[i]<<"\t";
+}
+void dequy(int i)
+{
+    //neu du cau xuat thong tien
+    //nguoc lai 
+    // thi thu cac kha nang co the dien la A,B,C
+    //thu ovt 0 cac kha nang co the dien la A,B,co
+    if(i>=n)
+    In();
+    else
+    {
+        for(char j='A';j<='C';j++)
+        {
+            a[i]=j;
+            dequy(i+1);
+        }    
+    }
+}
+int main()
+{
+    n=3;
+    //do dai cua n la bao nhieu
+    // de quy tu vi tri dau tien
+    dequy(0);
+    return 0;
+}
