@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+bool kiemtrahople(int so)
+{
+    if(so%2==0)return true;
+    return false;
+}
+int main()
+{
+    int *p;    // con tro tro den vung nho chua n so nguoi
+            // nhap vao
+    int n;
+    cout<<"\n nhap so phan tu can luu tru";
+    cin>>n;
+    p=new int[n];    
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n nhap phan tu thu "<<i<<":";
+        cin>>p[i];
+    }
+    for(int i=0;i<n;i++)
+        cout<<p[i];
+    
+    int *pchan; // cho pchan tro den vung nho cac so chan 
+    int dem=0;
+    
+    for(int i=0;i<n;i++)            
+    {
+        if(kiemtrahople(p[i]))dem++;
+    }
+    // cap phat vung nho chua duoc dem so chan
+    pchan=new int[dem];
+    int nchan=0;
+    for(int i=0;i<n;i++)
+    {
+        if(kiemtrahople(p[i]))
+        {
+            pchan[nchan]=p[i]; 
+            nchan++;
+        }
+    }
+    cout<<"\n cac phan tu chan trong day pchan: ";
+    for(int i=0;i<nchan;i++)
+        cout<<pchan[i];
+}
