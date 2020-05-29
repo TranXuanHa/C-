@@ -1,0 +1,69 @@
+#include<iostream>
+
+using namespace std;
+
+struct sinhvien
+{
+	int ma;
+	string hoten;
+	float dtb;
+};
+
+typedef struct Node
+{
+	sinhvien data;
+	Node *next;
+}Nodetype;
+
+typedef Nodetype *Nodeptr;
+
+Nodeptr CreateNode(sinhvien x)
+{
+	Nodeptr p;
+	p=new Node;
+	p->data=x;
+	p->next=NULL;
+	return p;
+}
+void InsertLast(Nodeptr &Head,Nodeptr &Tail, Nodeptr p)
+{
+	if(Head==NULL)
+	{
+		Head=p;
+		Tail=p;
+	}
+	else
+	{
+		Tail->next=p;
+		Tail=p;
+	}
+}
+void PrintSV(sinhvien x)
+{
+	cout<<"\n"<<x.ma<<"\t"<<x.hoten<<"\t"<<x.dtb<<endl;
+}
+void PrintDSLK(Nodeptr Head,Nodeptr Tail)
+{
+	Nodeptr p=Head;
+	while(p!=NULL)
+	{
+		PrintSV(p->data);
+		p=p->next;
+	}
+}
+int main()
+{
+	Nodeptr Head,Tail;
+	Head=Tail=NULL;
+	Nodeptr p;
+	sinhvien x={1,"thi no",9.5};
+	sinhvien a={2,"Chi pheo",6.5};
+	p=CreateNode(x);
+	InsertLast(Head,Tail,p);
+	p=CreateNode(a);
+	InsertLast(Head,Tail,p);
+	
+	PrintDSLK(Head,Tail);
+	
+	return 0;
+}
