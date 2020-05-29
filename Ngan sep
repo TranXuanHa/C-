@@ -1,0 +1,64 @@
+#include<iostream>
+#define m 5 // dinh nghia 1 hang so m co gia tri la 5
+
+using namespace std;
+
+struct nganxep
+{
+	int data[m];
+	int top;
+};
+
+void Push(nganxep &s,int x)
+{
+	if(s.top==m-1)// mang nen ngan xep luu tru tu 0 den m-1
+	{
+		cout<<"\n ngan xep day";
+		//exit(0);
+	}
+	else
+	{
+		s.top=s.top+1;
+		s.data[s.top]=x;		
+	}
+}
+
+int Pop(nganxep &s)
+{
+	if(s.top==-1)
+	{
+		cout<<"\n ngan xep rong";
+		return -1;
+	}
+	else
+	{
+		int x;
+		x=s.data[s.top];
+		s.top=s.top-1;
+		return x;
+		//return s.data[s.top--];
+	}
+}
+
+void Print(nganxep s)
+{
+	int x=Pop(s);
+	while(x!=-1)
+	{
+		cout<<x<<"\t";
+		x=Pop(s);
+	}
+}
+int main()
+{
+	nganxep s;
+	s.top=-1; // khoi tao ngan xep rong 
+	Push(s,1);
+	Push(s,2);
+	Push(s,10);
+	Push(s,11);
+	Push(s,12);
+	Push(s,13);
+	Print(s);
+	return 0;
+}
