@@ -1,0 +1,73 @@
+#include<iostream>
+#define m 5
+using namespace std;
+
+typedef struct hangdoi
+{
+	int data[m];
+	int head,tail;
+}Queue; 
+
+void khoitao(hangdoi &q)
+{
+	q.head=q.tail=0;//gia tri 0 la rong
+}
+// kiem tra hang doi rong hay day
+int IsEmpty(hangdoi q)
+{
+	return (q.head==q.tail?1:0);
+}
+
+void Push(hangdoi &q,int x)
+{
+	int vt;
+	vt=(q.tail+1)%m;
+	if(vt!=q.head)
+	{
+		q.data[vt]=x;
+		q.tail++;
+	}
+	else 
+		cout<<"\n hang doi day";
+}
+int Pop(hangdoi &q)
+{
+	int vt,x;
+	while(!IsEmpty(q))
+	{
+		vt=(q.head+1)%m;
+		x=q.data[vt];
+		q.head=vt;
+		return x;
+	}
+	return -1;
+}
+void Xuatdulieutronghangdoi(hangdoi &q)
+{
+	int x=Pop(q);
+	while(x!=-1)
+	{
+		cout<<x<<"\t";
+		x=Pop(q);
+	}
+
+}
+void NhapHangdoi(hangdoi &q)
+{
+	int x;
+	while(true)
+	{
+		cout<<"\n nhap gia tri cho hang doi, nhan -1 de ket thuc";
+		cin>>x;
+		if(x==-1)break;
+		Push(q,x);
+	}
+}
+int main()
+{
+	hangdoi q;//khai bao hang doi
+	khoitao(q);//khoi tao hang doi rong bang cach gan gia tri 0
+	NhapHangdoi(q);
+	Xuatdulieutronghangdoi(q);
+	return 0;
+}
