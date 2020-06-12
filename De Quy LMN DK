@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+int n;
+char a[100];
+void In()
+{
+	cout<<endl;
+	for(int i=0;i<n;i++)
+	cout<<a[i]<<"\t";
+}
+void kiemtra()
+{
+	int h=0, dem=0;
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]=='N')h++;
+	}
+	if(h==2)In();
+}
+void dequy(int i)
+{
+	if(i>=n)kiemtra();
+	
+	else{
+		
+		for(int j='L';j<='N';j++)
+	{
+		
+		a[i]=j;
+		dequy(i+1);
+	}
+	}
+}
+int main()
+{
+	n=3;
+	dequy(0);
+}
